@@ -1,7 +1,7 @@
 import React from "react";
 import useToken from "../../useToken";
 
-class RegisterStockTrade extends React.Component {
+class RegisterMFTrade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,7 +79,7 @@ class RegisterStockTrade extends React.Component {
     render() {
         return (
             <div>
-                <h1>Register Stock Trade</h1>
+                <h1>Register MF Trade</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <p>Account Number</p>
@@ -105,6 +105,13 @@ class RegisterStockTrade extends React.Component {
                         <p>Trade Date</p>
                         <input type="text" name="trade_date" onChange={this.handleChange} />
                     </label>
+                    <label>
+                        <p>TRADE TYPE</p>
+                        <select name="trade_type" onChange={this.handleChange}>
+                            <option value="BUY">BUY</option>
+                            <option value="SELL">SELL</option>
+                        </select>
+                    </label>
                     <div>
                         <button type="submit">Register</button>
                     </div>
@@ -114,4 +121,4 @@ class RegisterStockTrade extends React.Component {
     }
         
 }
-export default RegisterStockTrade;
+export default RegisterMFTrade;

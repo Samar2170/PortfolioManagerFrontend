@@ -7,8 +7,8 @@ import SideNav from './components/Base/SideNav';
 import Dashboard from './components/Dashboard';
 import Preferences from './components/Preferences';
 import RegisterAll from './components/Register/RegisterAll';
-import RegisterStockTrade from './components/RegisterTrades/StockTrades';
-
+import RegisterAllTrades from './components/RegisterTrades/RegisterTrades';
+import StockHoldings from './components/Holdings/Stocks';
 function App() {
   const { token, setToken} = useToken();
   if (!token) {
@@ -29,7 +29,10 @@ function App() {
         <Routes>
           <Route path='/dashboard' element={<Dashboard/>} exact/>
           <Route path='/preferences' element={<Preferences/>} exact/>
-          <Route path='/register' element={<RegisterStockTrade/>} exact/>
+          <Route path='/register' element={<RegisterAll/>} exact/>
+          <Route path='/register-trades' element={<RegisterAllTrades />} exact/>
+          <Route path='/stock-holdings'  element={<StockHoldings view="stock"/>} exact/>
+          <Route path='/mf-holdings'  element={<StockHoldings view="mf"/>} exact/>
         </Routes>
       </BrowserRouter>
       </div>

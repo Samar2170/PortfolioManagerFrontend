@@ -20,7 +20,7 @@ export default function RegisterAll(props) {
                     </label>
                     <label>
                         <input type="radio" name="form" value="DA" onChange={handleFormChange} checked={form === 'DA'} />
-                        <p>Debit Account</p>
+                        <p>Demat Account</p>
                     </label>
                 </div>
                 {form === 'BA' ? <RegisterBA /> : <RegisterDA />}

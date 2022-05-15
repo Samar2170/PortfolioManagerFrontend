@@ -10,6 +10,7 @@ class RegisterStockTrade extends React.Component {
             quantity: "",
             price: "",
             trade_date: "",
+            trade_type:"BUY",
             token: JSON.parse(localStorage.getItem("token")),
             accountData:[]
         }
@@ -45,12 +46,14 @@ class RegisterStockTrade extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const { token } = this.state;
+  
         const data = {
             account_no: this.state.account_no,
             symbol: this.state.symbol,
             quantity: this.state.quantity,
             price: this.state.price,
-            trade_date: this.state.trade_date
+            trade_date: this.state.trade_date,
+            trade_type: this.state.trade_type
         }
         fetch(`${process.env.REACT_APP_API_URL}portfolio/register-stock-trade/`, {
             method: "POST",
@@ -72,9 +75,16 @@ class RegisterStockTrade extends React.Component {
         )
     }
     handleChange = e => {
+        console.log(e.target.value, e.target.name);
         this.setState({
             [e.target.name]: e.target.value
         });
+    }
+    assignAccountNo = (e) => {
+        console.log(e.target.value);
+        this.setState({
+            account_no: e.target.value
+        })
     }
     render() {
         return (
@@ -83,9 +93,12 @@ class RegisterStockTrade extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <p>Account Number</p>
-                        <select name="account_no" onChange={this.handleChange}>
-                            {this.state.accountData.map(account => {
-                                return <option value={account.account_no}>{account.account_no}</option>
+                        <select name="account_no">
+                            <option value="">Select Account No</option>
+                            {this.state.accountData.map((account, index) => {
+                                return (
+                                    <option key={index} value={account.account_no} onClick={this.assignAccountNo}>{account.account_no}</option>
+                                )
                             })}
                         </select>
                     </label>
@@ -104,6 +117,13 @@ class RegisterStockTrade extends React.Component {
                     <label>
                         <p>Trade Date</p>
                         <input type="text" name="trade_date" onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        <p>TRADE TYPE</p>
+                        <select name="trade_type" onChange={this.handleChange}>
+                            <option value="BUY">BUY</option>
+                            <option value="SELL">SELL</option>
+                        </select>
                     </label>
                     <div>
                         <button type="submit">Register</button>

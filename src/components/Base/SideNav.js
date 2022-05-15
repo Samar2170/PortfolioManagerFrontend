@@ -13,6 +13,18 @@ const NavOptions = {
         path: '/register',
         label: 'Register'
     },
+    RegisterTrades : {
+        path:'/register-trades',
+        label:'Register Trades'
+    },
+    StockHoldings : {
+        path:'/stock-holdings',
+        label:'Stock Holdings'
+    },
+    MFHoldings : {
+        path:'/mf-holdings',
+        label:'MF Holdings'
+    }
 }
 
 
